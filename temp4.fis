@@ -1,0 +1,80 @@
+[System]
+Name='temp4'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=3
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperatura'
+Range=[-10 30]
+NumMFs=5
+MF1='Muy_Frio':'gaussmf',[5 -10]
+MF2='Frio':'gaussmf',[2.2 3]
+MF3='Fresco':'gaussmf',[2.9 9.3]
+MF4='Caliente':'gaussmf',[3.248 19]
+MF5='Muy_Caliente':'gaussmf',[4.248 30]
+
+[Input2]
+Name='Humedad'
+Range=[0 1]
+NumMFs=5
+MF1='Muy_Seco':'trimf',[0 0 0.15]
+MF2='Seco':'trimf',[0.1 0.2 0.3]
+MF3='Optimo':'trimf',[0.25 0.4 0.6]
+MF4='Humedo':'trimf',[0.55 0.6 0.75]
+MF5='Muy_Humedo':'trimf',[0.7 1 1]
+
+[Output1]
+Name='Termostato'
+Range=[0 1]
+NumMFs=2
+MF1='Bajar_Temperatura':'trimf',[0 0 0.5]
+MF2='Subir_Temperatura':'trimf',[0.5 1 1]
+
+[Output2]
+Name='Ventilador'
+Range=[0 1]
+NumMFs=2
+MF1='Bajar_Ventilador':'trimf',[0 0 0.5]
+MF2='Subir_Ventilador':'trimf',[0.5 1 1]
+
+[Output3]
+Name='Humidificdor'
+Range=[0 1]
+NumMFs=2
+MF1='Bajar_Humificador':'trimf',[0 0 0.5]
+MF2='Subir_Humidificador':'trimf',[0.5 1 1]
+
+[Rules]
+1 1, 2 1 2 (1) : 1
+1 2, 2 1 2 (1) : 1
+1 3, 2 1 1 (1) : 1
+1 4, 2 2 1 (1) : 1
+1 5, 2 2 1 (1) : 1
+2 1, 2 1 2 (1) : 1
+2 2, 2 1 2 (1) : 1
+2 3, 2 1 1 (1) : 1
+2 4, 2 2 1 (1) : 1
+2 5, 2 2 1 (1) : 1
+3 1, 2 1 2 (1) : 1
+3 2, 2 1 2 (1) : 1
+3 3, 2 1 1 (1) : 1
+3 4, 2 2 1 (1) : 1
+3 5, 2 2 1 (1) : 1
+4 1, 1 1 2 (1) : 1
+4 2, 1 1 2 (1) : 1
+4 3, 1 1 1 (1) : 1
+4 4, 1 2 1 (1) : 1
+4 5, 1 2 1 (1) : 1
+5 1, 1 1 2 (1) : 1
+5 2, 1 1 2 (1) : 1
+5 3, 1 1 1 (1) : 1
+5 4, 1 2 1 (1) : 1
+5 5, 1 2 1 (1) : 1
